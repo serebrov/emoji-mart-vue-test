@@ -4,9 +4,9 @@
       <h1>Emoji Mart Vue 🏬</h1>
     </div>
     <div class="row">
-      <emoji emoji=":santa::skin-tone-3:" :size="32" />
-      <emoji emoji="santa" set="emojione" :size="32" />
-      <emoji :emoji="santaEmojiObject" :size="32" />
+      <emoji :data="index" emoji=":santa::skin-tone-3:" :size="32" />
+      <emoji :data="index" emoji="santa" set="emojione" :size="32" />
+      <emoji :data="index" :emoji="santaEmojiObject" :size="32" />
     </div>
 
     <div class="row">
@@ -36,7 +36,7 @@
     </div>
 
     <div v-if="isVisible" class="row">
-      <nimble-picker
+      <picker
         :data="index"
         :set="activeSet"
         :native="native"
@@ -49,7 +49,7 @@
 
     <div class="row-small">
       <iframe
-        src="https://ghbtns.com/github-btn.html?user=jm-david&repo=emoji-mart-vue&type=star&count=true"
+        src="https://ghbtns.com/github-btn.html?user=serebrov&repo=emoji-mart-vue&type=star&count=true"
         frameBorder="0"
         scrolling="0"
         width="90px"
@@ -60,7 +60,7 @@
     <div class="row"></div>
     <div class="row">
       <div>Custom Search And Preview Templates Example</div>
-      <Picker :native="true">
+      <Picker :data="index" :native="true">
         <template slot="searchTemplate" slot-scope="slotProps">
           <input
             type="text"
@@ -71,7 +71,7 @@
         <template slot="previewTemplate" slot-scope="slotProps">
           <div class="emoji-mart-preview">
             <div class="emoji-mart-preview-emoji">
-              <NimbleEmoji
+              <Emoji
                 :data="slotProps.data"
                 :emoji="slotProps.emoji ? slotProps.emoji : 'point_up'"
                 :native="slotProps.emojiProps.native"
@@ -98,7 +98,7 @@
 
     <div class="row">
       <div>Filtered picker example</div>
-      <NimblePicker
+      <Picker
         :native="true"
         emoji="flag-tf"
         :emojiSize="18"
@@ -110,13 +110,7 @@
 
 <script>
 import data from "emoji-mart-vue-fast/data/all.json";
-import {
-  Picker,
-  NimblePicker,
-  NimbleEmoji,
-  Emoji,
-  EmojiIndex
-} from "emoji-mart-vue-fast";
+import { Picker, Emoji, EmojiIndex } from "emoji-mart-vue-fast";
 import "emoji-mart-vue-fast/css/emoji-mart.css";
 
 const CUSTOM_EMOJIS = [
@@ -186,9 +180,7 @@ export default {
   },
   components: {
     Picker,
-    NimblePicker,
-    Emoji,
-    NimbleEmoji
+    Emoji
   }
 };
 </script>
